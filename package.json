@@ -1,0 +1,8 @@
+{
+  "name": "learnElectron",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/MondoGao/learnElectron",
+  "author": "Mondo <mondogao@gmail.com>",
+  "license": "MIT"
+}
