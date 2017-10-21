@@ -1,0 +1,10 @@
+{
+  "env": {
+    "renderer": {
+      "presets": [
+        "env",
+        "react"
+      ]
+    }
+  }
+}
