@@ -1,6 +1,16 @@
-const { app, BrowserWindow } = require('electron');
-const path = require('path');
-const url = require('url');
+import { app, BrowserWindow } from 'electron';
+import path from 'path';
+import url from 'url';
+import installExtension, * as extensions from 'electron-devtools-installer';
+
+function installExtensions() {
+  const plugins = [
+    extensions.REACT_DEVELOPER_TOOLS,
+    extensions.REDUX_DEVTOOLS,
+  ];
+
+  return Promise.all(plugins.map(plug => installExtension(plug)));
+}
 
 let win;
 
@@ -9,6 +19,7 @@ function createWindow() {
     width: 800,
     height: 600,
     frame: false, 
+    transparent: true,
   });
 
   win.loadURL(url.format({
@@ -22,7 +33,13 @@ function createWindow() {
   });
 }
 
-app.on('ready', createWindow);
+app.on('ready', async () => {
+  if (process.env.NODE_ENV === 'develop') {
+    await installExtensions();
+  }
+
+  createWindow();
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
