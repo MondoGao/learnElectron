@@ -4,13 +4,13 @@ import { resolve } from 'path';
 
 import baseConfig from './webpack.config.base.js';
 
-import { outputPath } from './settings.js';
+import { outputPath } from '../settings.js';
 
 export default {
   devtool: 'source-map',
   target: 'electron-main',
 
-  entry: './app/main.dev',
+  entry: './main.dev',
 
   output: {
     path: outputPath,

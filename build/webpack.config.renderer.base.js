@@ -6,7 +6,7 @@ import baseConfig from './webpack.config.base.js';
 export default smart(baseConfig, {
   target: 'electron-renderer', 
 
-  entry: './app/index.js', 
+  entry: './index.js', 
 
   module: {
     rules: [

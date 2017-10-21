@@ -1,4 +1,7 @@
+import { resolve } from 'path';
+
 export default {
+  context: resolve(__dirname, '..', 'app'),
   module: {
     rules: [
       {

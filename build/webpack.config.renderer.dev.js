@@ -5,7 +5,7 @@ import { smart } from 'webpack-merge';
 
 import baseConfig from './webpack.config.renderer.base';
 
-import { devServerPort, publicPath } from './settings.js';
+import { devServerPort, publicPath } from '../settings.js';
 
 const outputPath = resolve(__dirname, 'dist');
 
@@ -14,7 +14,7 @@ export default smart(baseConfig, {
 
   entry: [
     'react-hot-loader/patch',
-    './app/index.js',
+    './index.js',
   ],
 
   output: {
