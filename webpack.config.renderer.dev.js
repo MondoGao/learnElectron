@@ -23,21 +23,6 @@ export default smart(baseConfig, {
     filename: 'renderer.dev.js',
   },
 
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-          }, 
-        }, 
-      },
-    ], 
-  },
-
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
