@@ -16,10 +16,14 @@ let win;
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 500,
+    height: 650,
+    center: true,
+    resizable: false,
+    fullscreenable: false,
     frame: false, 
     transparent: true,
+    show: false,
   });
 
   win.loadURL(url.format({
@@ -28,6 +32,9 @@ function createWindow() {
     slashes: true, 
   }));
 
+  win.on('ready-to-show', () => {
+    win.show();
+  });
   win.on('closed', () => {
     win =  null;
   });

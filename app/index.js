@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import 'normalize.css';
 
 import App from './components/App';
+
+import './index.global.css';
 
 const render = (Component) => {
   ReactDOM.render(
