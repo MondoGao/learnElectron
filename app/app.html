@@ -7,19 +7,20 @@
   <body>
     <div id="app"></div>
     <script charset="utf-8">
-      const scripts = [];
+const scripts = [];
 
 const port = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV === 'develop') {
-  scripts.push(`http://localhost:${port}/dist/renderer.dev.js`)
+  scripts.push(`http://localhost:${port}/dist/renderer.dev.js`);
 } else {
+  scripts.push('./dist/renderer.prod.js');
 }
 
 document.write(
   scripts
-  .map(script => `<script defer src="${script}"></script\>`)
-  .join('')
+    .map(script => `<script defer src="${script}"></script\>`)
+    .join('')
 );
     </script>
   </body>

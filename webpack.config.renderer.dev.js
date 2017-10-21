@@ -12,6 +12,11 @@ const outputPath = resolve(__dirname, 'dist');
 export default smart(baseConfig, {
   devtool: 'inline-source-map',
 
+  entry: [
+    'react-hot-loader/patch',
+    './app/index.js',
+  ],
+
   output: {
     publicPath,
     path: outputPath, 
@@ -34,13 +39,15 @@ export default smart(baseConfig, {
   },
 
   plugins: [
-      new webpack.NamedModulesPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ], 
 
   devServer: {
     publicPath,
     port: devServerPort,
     compress: true,
+    hot: true,
     headers: {
       'Access-Control-Allow-Origin': '*', 
     }, 
