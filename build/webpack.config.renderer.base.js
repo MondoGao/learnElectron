@@ -11,7 +11,10 @@ export default smart(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.global\.css$/, 
+        test: [
+          /\.global\.css$/,
+          /node_modules.*\.css$/,
+        ], 
         use: [
           'style-loader',
           {
@@ -19,12 +22,15 @@ export default smart(baseConfig, {
             options: {
               sourceMap: true,
               camelCase: true,
+              importLoaders: 1, 
             }, 
-          }
+          },
+          'postcss-loader',
         ]
       },
       {
         test: /^((?!\.global).)*\.css$/,
+        exclude: /node_modules/, 
         use: [
           'style-loader',
           {
@@ -36,6 +42,7 @@ export default smart(baseConfig, {
               localIdentName: '[name]__[local]__[hash:base64:5]',
             },
           },
+          'postcss-loader',
         ],
       },
       {

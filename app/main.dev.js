@@ -23,6 +23,7 @@ function createWindow() {
     fullscreenable: false,
     frame: false, 
     transparent: true,
+    hasShadow: false, 
     show: false,
   });
 
