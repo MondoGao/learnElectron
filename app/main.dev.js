@@ -3,6 +3,8 @@ import path from 'path';
 import url from 'url';
 import installExtension, * as extensions from 'electron-devtools-installer';
 
+import './controllers/database.js';
+
 function installExtensions() {
   const plugins = [
     extensions.REACT_DEVELOPER_TOOLS,

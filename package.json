@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
+    "mssql": "^4.1.0",
     "normalize.css": "^7.0.0",
     "ramda": "^0.25.0",
     "react": "^16.0.0",

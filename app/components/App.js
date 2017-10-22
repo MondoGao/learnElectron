@@ -1,48 +1,49 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
+import { ipcRenderer } from 'electron';
 
 import styles from './App.css';
 
 export default class App extends Component {
   state = {
-    ip: '',
-    port: '',
-    username: '', 
-    passwd: '', 
+    form: {
+      ip: '',
+      port: '',
+      username: '', 
+      passwd: '', 
+      database: '',
+    },
   }
 
   handleInputChange = R.curry((name, e) => {
     this.setState({
-      [name]: e.target.value,
+      form: {
+        ...this.state.form,
+        [name]: e.target.value,
+      }, 
     });
   })
 
   handleSubmit = () => {
-    console.log(this.state);
+    ipcRenderer.send('connect', this.state.form);
+    ipcRenderer.once('connected', (e, arg) => {
+      alert(`成功连接到数据库，数据库中的表有:${arg.join()}`)
+    });
   }
   
   render() {
+    const createInputConfig = (name, placeholder) => ({
+      name,
+      placeholder,
+      onChange: this.handleInputChange(name),
+      value: this.state.form[name], 
+    })
     const inputArr = [
-      {
-        name: 'ip',
-        placeholder: '地址',
-        onChange: this.handleInputChange('ip'),
-      },
-      {
-        name: 'port', 
-        placeholder: '端口', 
-        onChange: this.handleInputChange('port'),
-      },
-      {
-        name: 'username', 
-        placeholder: '用户名',
-        onChange: this.handleInputChange('username'),
-      },
-      {
-        name: 'passwd', 
-        placeholder: '密码',
-        onChange: this.handleInputChange('passwd'),
-      },
+      createInputConfig('ip', '地址'),
+      createInputConfig('port', '端口'),
+      createInputConfig('username', '用户名'),
+      createInputConfig('passwd', '密码'),
+      createInputConfig('database', '数据库'),
     ];
 
     return (
