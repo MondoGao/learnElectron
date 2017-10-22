@@ -3,6 +3,7 @@
     "renderer": {
       "presets": [
         "env",
+        "stage-2",
         "react"
       ],
       "plugins": [
